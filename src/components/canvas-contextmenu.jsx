@@ -73,7 +73,7 @@ export const CanvasContextMenu = (props) => {
 										hideContextMenu()
 									}}
 								>
-									<CornerLeftUp
+									<CornerDownRight
 										css={tw`text-gray-400 h-4 w-4 mr-2`}
 									/>{' '}
 									Horizontal Flip
@@ -87,7 +87,7 @@ export const CanvasContextMenu = (props) => {
 										hideContextMenu()
 									}}
 								>
-									<CornerDownRight
+									<CornerLeftUp
 										css={tw`text-gray-400 h-4 w-4 mr-2`}
 									/>{' '}
 									Vertical Flip
