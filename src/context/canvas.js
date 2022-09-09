@@ -13,6 +13,11 @@ function CanvasProvider({ children }) {
 		editor: {
 			tab: null,
 		},
+		contextMenu: {
+			active: false,
+			x: null,
+			y: null,
+		},
 	})
 
 	const value = { state, dispatch }

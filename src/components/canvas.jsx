@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { fabric } from 'fabric'
 import { init } from '../utils/fabric'
 import { useCanvas } from '../context/canvas'
-import { onObjectSelected } from '../utils/canvas-events'
+import { onMouseDown, onObjectSelected } from '../utils/canvas-events'
 
 export const FabricJSCanvas = ({ options, ...props }) => {
 	const canvasEl = useRef(null)
@@ -14,13 +14,33 @@ export const FabricJSCanvas = ({ options, ...props }) => {
 		selectionBorderColor: 'blue',
 		preserveObjectStacking: true,
 
-		fireRightClick: false, // <-- enable firing of right click events
+		fireRightClick: true, // <-- enable firing of right click events
 		fireMiddleClick: false, // <-- enable firing of middle click events
 		stopContextMenu: true, // <--  prevent context menu from showing
 	}
 
 	const dispatchSelection = (e) =>
 		dispatch({ editor: { tab: onObjectSelected(e) } })
+		
+	const onMouseDown = (e) => {
+		if (e.button === 3) {
+			dispatch({
+				contextMenu: {
+					x: e.e.clientX + 8,
+					y: e.e.clientY + 8,
+					active: true,
+				},
+			})
+		} else {
+			dispatch({
+				contextMenu: {
+					x: null,
+					y: null,
+					active: false,
+				},
+			})
+		}
+	}
 
 	useEffect(() => {
 		const canvas = new fabric.Canvas(canvasEl.current, {
@@ -32,6 +52,7 @@ export const FabricJSCanvas = ({ options, ...props }) => {
 			'selection:created': dispatchSelection,
 			'selection:updated': dispatchSelection,
 			'selection:cleared': dispatchSelection,
+			'mouse:down': onMouseDown,
 		})
 
 		init(fabric, canvas)
