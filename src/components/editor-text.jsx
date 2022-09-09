@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 import { Colors } from '../constants/colors'
 import { useCanvas } from '../context/canvas'
+import { ColorPicker } from './color-picker'
 
 export const EditorText = (props) => {
 	const {
@@ -53,11 +54,11 @@ export const EditorText = (props) => {
 		setRotation(e.target.value)
 	}
 	const updateFill = (e) => {
-		if (!activeObject) return setFill(e.target.value)
-		activeObject.set({ fill: e.target.value })
+		if (!activeObject) return setFill(e)
+		activeObject.set({ fill: e })
 		canvas.renderAll()
 
-		setFill(e.target.value)
+		setFill(e)
 	}
 
 	if (canvas)
@@ -93,18 +94,7 @@ export const EditorText = (props) => {
 			</div>
 			<div css={tw`mb-4`}>
 				<label htmlFor="color">Color</label>
-				<select
-					id="color"
-					value={fill}
-					onChange={updateFill}
-					css={tw`w-full border border-gray-400 p-2 rounded`}
-				>
-					{Colors.map((v) => (
-						<option key={v} value={v}>
-							{v}
-						</option>
-					))}
-				</select>
+				<ColorPicker selected={fill} setSelected={updateFill} />
 			</div>
 			<div css={tw`mb-4`}>
 				<label htmlFor="rotation">Rotate</label>

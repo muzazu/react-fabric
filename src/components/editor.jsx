@@ -1,6 +1,8 @@
 import tw from 'twin.macro'
 import { useCanvas } from '../context/canvas'
+import { EditorImage } from './editor-image'
 import { EditorSetting } from './editor-setting'
+import { EditorShapes } from './editor-shapes'
 import { EditorTabs } from './editor-tabs'
 import { EditorText } from './editor-text'
 
@@ -18,6 +20,8 @@ export const Editor = (props) => {
 				>
 					{(editor.tab == 'text' || !editor.tab) && <EditorText />}
 					{(editor.tab == 'setting' || !editor.tab) && <EditorSetting />}
+					{(editor.tab == 'image' || !editor.tab) && <EditorImage />}
+					{(editor.tab == 'shapes' || !editor.tab) && <EditorShapes />}
 				</div>
 			</div>
 		</section>
