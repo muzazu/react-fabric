@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { fabric } from 'fabric'
+import { init } from '../utils/fabric'
 import { useCanvas } from '../context/canvas'
-import { onObjectSelected, overrideRotateIcon } from '../utils/canvas-events'
+import { onObjectSelected } from '../utils/canvas-events'
 
 export const FabricJSCanvas = ({ options, ...props }) => {
 	const canvasEl = useRef(null)
@@ -28,6 +29,8 @@ export const FabricJSCanvas = ({ options, ...props }) => {
 			'selection:updated': dispatchSelection,
 			'selection:cleared': dispatchSelection,
 		})
+
+		init(fabric, canvas)
 
 		dispatch({ canvas, fabric })
 

@@ -9,8 +9,8 @@ export const EditorText = (props) => {
 	} = useCanvas()
 
 	const [text, setText] = useState('')
-	const [rotation, setRotation] = useState()
-	const [fill, setFill] = useState()
+	const [rotation, setRotation] = useState('')
+	const [fill, setFill] = useState('')
 
 	const activeObject = canvas?.getActiveObject() || null
 
@@ -39,7 +39,6 @@ export const EditorText = (props) => {
 	}
 	const updateFill = (e) => {
 		if (!activeObject) return setFill(e.target.value)
-		console.log(activeObject)
 		activeObject.set({ fill: e.target.value })
 		canvas.renderAll()
 
