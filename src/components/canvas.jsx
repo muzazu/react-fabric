@@ -13,6 +13,10 @@ export const FabricJSCanvas = ({ options, ...props }) => {
 		selection: true,
 		selectionBorderColor: 'blue',
 		preserveObjectStacking: true,
+
+		fireRightClick: false, // <-- enable firing of right click events
+		fireMiddleClick: false, // <-- enable firing of middle click events
+		stopContextMenu: true, // <--  prevent context menu from showing
 	}
 
 	const dispatchSelection = (e) =>

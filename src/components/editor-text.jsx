@@ -16,11 +16,26 @@ export const EditorText = (props) => {
 
 	const addText = () => {
 		if (fabric && canvas) {
-			const ftext = new fabric.Text(text, { type: 'text' })
+			const ftext = new fabric.Text(text, {
+				type: 'text',
+				fill: fill || '#000',
+				angle: rotation || 0,
+			})
 			canvas.viewportCenterObject(ftext)
 			canvas.add(ftext)
 			canvas.setActiveObject(ftext)
 		}
+	}
+
+	const addNewText = () => {
+		if (canvas) {
+			canvas.discardActiveObject()
+		}
+
+		// reset form
+		setText('')
+		setRotation('')
+		setFill('')
 	}
 
 	const updateText = (e) => {
@@ -55,27 +70,34 @@ export const EditorText = (props) => {
 			setText(activeObject.text)
 			setRotation(activeObject.angle)
 			setFill(activeObject.fill)
+		} else {
+			// reset input on discard active object
+			setText('')
+			setRotation('')
+			setFill('')
 		}
 	}, [activeObject])
 
 	return (
 		<div {...props}>
+			<h2 css={tw`text-2xl font-bold mb-8`}>Text</h2>
 			<div css={tw`mb-4`}>
-				<label htmlFor="text">Teks</label>
+				<label htmlFor="text">Text</label>
 				<textarea
 					id="text"
 					value={text}
 					onChange={updateText}
-					css={tw`w-full border border-gray-400`}
+					placeholder="Enter your text here"
+					css={tw`w-full border border-gray-400 p-2 rounded`}
 				/>
 			</div>
 			<div css={tw`mb-4`}>
-				<label htmlFor="color">Warna</label>
+				<label htmlFor="color">Color</label>
 				<select
 					id="color"
 					value={fill}
 					onChange={updateFill}
-					css={tw`w-full border border-gray-400`}
+					css={tw`w-full border border-gray-400 p-2 rounded`}
 				>
 					{Colors.map((v) => (
 						<option key={v} value={v}>
@@ -85,21 +107,29 @@ export const EditorText = (props) => {
 				</select>
 			</div>
 			<div css={tw`mb-4`}>
-				<label htmlFor="rotation">Rotasi</label>
+				<label htmlFor="rotation">Rotate</label>
 				<input
 					id="rotation"
 					value={rotation}
 					onChange={updateRotation}
-					css={tw`w-full border border-gray-400`}
+					placeholder="0-360"
+					css={tw`w-full border border-gray-400 p-2 rounded`}
 				/>
 			</div>
 
-			{!activeObject && (
+			{!activeObject ? (
 				<button
-					css={tw`w-full py-2 border border-gray-200 rounded text-center bg-white shadow-md mt-4`}
+					css={tw`w-full py-2 border border-gray-200 rounded text-center bg-blue-500 text-white shadow-md mt-4`}
 					onClick={() => addText()}
 				>
-					Tambah
+					Add
+				</button>
+			) : (
+				<button
+					css={tw`w-full py-2 border border-gray-200 rounded text-center bg-white shadow-md mt-4`}
+					onClick={() => addNewText()}
+				>
+					Add New Text
 				</button>
 			)}
 		</div>
