@@ -11,7 +11,7 @@ function CanvasProvider({ children }) {
 		canvas: null,
 		fabric: null,
 		editor: {
-			tab: null,
+			tab: 'text',
 		},
 		contextMenu: {
 			active: false,

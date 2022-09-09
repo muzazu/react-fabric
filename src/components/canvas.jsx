@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { fabric } from 'fabric'
 import { init } from '../utils/fabric'
 import { useCanvas } from '../context/canvas'
-import { onMouseDown, onObjectSelected } from '../utils/canvas-events'
+import { onObjectSelected } from '../utils/canvas-events'
 
 export const FabricJSCanvas = ({ options, ...props }) => {
 	const canvasEl = useRef(null)
@@ -21,7 +21,7 @@ export const FabricJSCanvas = ({ options, ...props }) => {
 
 	const dispatchSelection = (e) =>
 		dispatch({ editor: { tab: onObjectSelected(e) } })
-		
+
 	const onMouseDown = (e) => {
 		if (e.button === 3) {
 			dispatch({

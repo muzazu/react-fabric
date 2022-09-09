@@ -9,7 +9,7 @@ function App() {
 		<div css={tw`w-full flex`}>
 			<CanvasContextMenu />
 			<Editor />
-			<div css={tw`bg-gray-500 w-full relative`}>
+			<div css={tw`bg-gray-300 w-full relative`}>
 				<CanvasActions />
 				<div css={tw`flex min-h-screen items-center w-full`}>
 					<div
