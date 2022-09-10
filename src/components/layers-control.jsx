@@ -51,9 +51,9 @@ export const LayersControl = (props) => {
 						<div css={tw`px-4 py-4 flex space-x-4`}>
 							<LayerPreview
 								obj={val}
-								css={tw`w-1/4 bg-white rounded-md border border-gray-300`}
+								css={tw`w-16 h-16 overflow-hidden bg-white rounded-md border border-gray-300`}
 							/>
-							<div css={tw`w-full`}>
+							<div>
 								<div css={tw`truncate`}>
 									{val.type.toUpperCase()}{' '}
 									{val.text && `- ${val.text}`}
