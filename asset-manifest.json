@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/react-fabric/static/js/main.79b366c4.js",
+    "main.js": "/react-fabric/static/js/main.ab4b182a.js",
     "static/media/square.svg": "/react-fabric/static/media/square.9770554269debb544518d2bec6e09c87.svg",
     "index.html": "/react-fabric/index.html",
     "static/media/triangle.svg": "/react-fabric/static/media/triangle.eac40d13b8d2dbbeeac9751aa444ee37.svg",
     "static/media/circle.svg": "/react-fabric/static/media/circle.598de53fe44da7214b033d8926e30ea6.svg",
-    "main.79b366c4.js.map": "/react-fabric/static/js/main.79b366c4.js.map"
+    "main.ab4b182a.js.map": "/react-fabric/static/js/main.ab4b182a.js.map"
   },
   "entrypoints": [
-    "static/js/main.79b366c4.js"
+    "static/js/main.ab4b182a.js"
   ]
 }
