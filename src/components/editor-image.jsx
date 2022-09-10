@@ -53,8 +53,10 @@ export const EditorImage = (props) => {
 				top: 0,
 				type: 'image',
 			})
+
+			canvas.viewportCenterObject(img)
 			canvas.add(img)
-			canvas.renderAll()
+			canvas.setActiveObject(img)
 		})
 	}
 
