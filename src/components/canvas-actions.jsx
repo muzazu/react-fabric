@@ -4,6 +4,7 @@ import {
 	CornerDownRight,
 	CornerLeftUp,
 	Download,
+	Trash,
 	Upload,
 } from 'react-feather'
 import tw from 'twin.macro'
@@ -15,6 +16,7 @@ import {
 	clone,
 	flipHorizontal,
 	flipVertical,
+	remove,
 	sendBackwards,
 } from '../utils/canvas-events'
 
@@ -73,6 +75,12 @@ export const CanvasActions = (props) => {
 				onClick={() => bringForward(canvas)}
 			>
 				<Upload css={tw`text-gray-900 h-4 w-4 mr-2`} /> Bring Forward
+			</button>
+			<button
+				css={tw`text-white bg-red-600 hover:bg-red-500 border border-gray-600 flex px-2 py-2 items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+				onClick={() => remove(canvas)}
+			>
+				<Trash css={tw`text-white h-4 w-4 mr-2`} /> Remove
 			</button>
 		</div>
 	)

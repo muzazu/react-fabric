@@ -7,6 +7,7 @@ import {
 	CornerDownRight,
 	CornerLeftUp,
 	Download,
+	Trash,
 	Upload,
 	XSquare,
 } from 'react-feather'
@@ -20,6 +21,7 @@ import {
 	clone,
 	flipHorizontal,
 	flipVertical,
+	remove,
 	sendBackwards,
 } from '../utils/canvas-events'
 
@@ -56,7 +58,7 @@ export const CanvasContextMenu = (props) => {
 					>
 						<Menu.Items
 							css={[
-								tw`absolute w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10`,
+								tw`absolute w-56 origin-top-right divide-y divide-gray-100 rounded-md overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10`,
 								{ top: contextMenu.y, left: contextMenu.x },
 							]}
 						>
@@ -67,7 +69,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										flipHorizontal(canvas)
 										hideContextMenu()
@@ -81,7 +83,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										flipVertical(canvas)
 										hideContextMenu()
@@ -95,7 +97,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										clone(canvas)
 										hideContextMenu()
@@ -109,7 +111,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										centerHorizontal(canvas)
 										hideContextMenu()
@@ -123,7 +125,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										centerVertical(canvas)
 										hideContextMenu()
@@ -137,7 +139,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										sendBackwards(canvas)
 										hideContextMenu()
@@ -151,7 +153,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										bringForward(canvas)
 										hideContextMenu()
@@ -161,6 +163,18 @@ export const CanvasContextMenu = (props) => {
 										css={tw`text-gray-400 h-4 w-4 mr-2`}
 									/>{' '}
 									Bring Forward
+								</button>
+							</Menu.Item>
+							<Menu.Item>
+								<button
+									css={tw`text-white bg-red-600 hover:bg-red-500 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
+									onClick={() => {
+										remove(canvas)
+										hideContextMenu()
+									}}
+								>
+									<Trash css={tw`text-white h-4 w-4 mr-2`} />{' '}
+									Remove
 								</button>
 							</Menu.Item>
 						</Menu.Items>
@@ -178,7 +192,7 @@ export const CanvasContextMenu = (props) => {
 					>
 						<Menu.Items
 							css={[
-								tw`absolute w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10`,
+								tw`absolute w-56 origin-top-right divide-y divide-gray-100 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10`,
 								{ top: contextMenu.y, left: contextMenu.x },
 							]}
 						>
@@ -189,7 +203,7 @@ export const CanvasContextMenu = (props) => {
 							</Menu.Item>
 							<Menu.Item>
 								<button
-									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}
+									css={tw`text-gray-900 hover:bg-blue-50 flex w-full items-center px-2 py-2 text-sm cursor-pointer`}
 									onClick={() => {
 										clearAll(canvas)
 										hideContextMenu()

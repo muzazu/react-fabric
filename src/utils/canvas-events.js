@@ -60,6 +60,12 @@ export const bringForward = (canvas) => {
 
 	canvas.bringForward(activeObject)
 }
+export const remove = (canvas) => {
+	const activeObject = canvas?.getActiveObject() || null
+	if (!activeObject) return
+
+	canvas.remove(activeObject)
+}
 
 export const clearAll = (canvas) => {
 	canvas.clear()
