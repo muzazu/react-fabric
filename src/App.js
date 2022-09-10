@@ -3,6 +3,7 @@ import { Editor } from './components/editor'
 import tw from 'twin.macro'
 import { CanvasContextMenu } from './components/canvas-contextmenu'
 import { CanvasActions } from './components/canvas-actions'
+import { LayersControl } from './components/layers-control'
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					</div>
 				</div>
 			</div>
+			<LayersControl />
 		</div>
 	)
 }

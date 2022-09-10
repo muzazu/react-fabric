@@ -1,3 +1,5 @@
+import IconRotate from '../assets/images/icon-rotate.png'
+
 export const init = (fabric, canvas) => {
 	/**
 	 * handle replace MTR/rotate control with icon
@@ -11,7 +13,7 @@ export const init = (fabric, canvas) => {
 	fabric.util.object.extend(fabric.Object.prototype, {
 		hasRotatingPoint: true,
 		selectedIconImage: new Image(),
-		iconSrc: '/assets/images/icon-rotate.png',
+		iconSrc: IconRotate,
 
 		drawControls: function (ctx, styleOverride) {
 			styleOverride = styleOverride || {}

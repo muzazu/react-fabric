@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 import { useCanvas } from '../context/canvas'
-import { ReactComponent as Circle } from '../svg/circle.svg'
-import { ReactComponent as Square } from '../svg/square.svg'
-import { ReactComponent as Triangle } from '../svg/triangle.svg'
+import { ReactComponent as Circle } from '../assets/svg/circle.svg'
+import { ReactComponent as Square } from '../assets/svg/square.svg'
+import { ReactComponent as Triangle } from '../assets/svg/triangle.svg'
 import { ColorPicker } from './color-picker'
 
 export const EditorShapes = (props) => {

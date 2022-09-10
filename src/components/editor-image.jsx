@@ -54,6 +54,7 @@ export const EditorImage = (props) => {
 				type: 'image',
 			})
 			canvas.add(img)
+			canvas.renderAll()
 		})
 	}
 
