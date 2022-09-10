@@ -1,6 +1,6 @@
 import { css } from '@emotion/css'
 import { Listbox, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { CheckCircle, ChevronDown } from 'react-feather'
 import tw from 'twin.macro'
 import { Colors } from '../constants/colors'
@@ -12,13 +12,15 @@ export const ColorPicker = ({ selected, setSelected, ...props }) => {
 				<Listbox.Button
 					css={tw`relative w-full cursor-default rounded bg-white py-2 px-2 text-left border border-gray-400 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-500 sm:text-sm`}
 				>
-					{selected ? (
+					{selected !== 'transparent' ? (
 						<span
 							css={[
 								tw`block h-4 w-12`,
 								{ backgroundColor: selected },
 							]}
 						></span>
+					) : selected === 'transparent' ? (
+						'Transparent'
 					) : (
 						<span css={tw`text-gray-400`}>Choose a color</span>
 					)}
@@ -38,8 +40,28 @@ export const ColorPicker = ({ selected, setSelected, ...props }) => {
 					leaveTo={css(tw`opacity-0`)}
 				>
 					<Listbox.Options
-						css={tw`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm`}
+						css={tw`absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10`}
 					>
+						<Listbox.Option
+							css={tw`relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-blue-100`}
+							value="transparent"
+						>
+							{({ selected }) => (
+								<>
+									Transparent
+									{selected ? (
+										<span
+											css={tw`absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400`}
+										>
+											<CheckCircle
+												css={tw`h-5 w-5`}
+												aria-hidden="true"
+											/>
+										</span>
+									) : null}
+								</>
+							)}
+						</Listbox.Option>
 						{Colors.map((color, colorIdx) => (
 							<Listbox.Option
 								key={colorIdx}

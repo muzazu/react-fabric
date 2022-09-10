@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import tw from 'twin.macro'
-import { Colors } from '../constants/colors'
 import { useCanvas } from '../context/canvas'
 import { ColorPicker } from './color-picker'
 
