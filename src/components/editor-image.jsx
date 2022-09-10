@@ -50,6 +50,7 @@ export const EditorImage = (props) => {
 			const img = myImg.set({
 				left: 0,
 				top: 0,
+				type: 'image',
 			})
 			canvas.add(img)
 		})

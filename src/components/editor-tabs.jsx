@@ -6,9 +6,19 @@ export const EditorTabs = (props) => {
 	const {
 		state: {
 			editor: { tab },
+			canvas,
 		},
 		dispatch,
 	} = useCanvas()
+
+	const handleUpdateTab = (tab) => {
+		// remove active object
+		const activeObject = canvas?.getActiveObject() || null
+		if (activeObject) canvas.discardActiveObject(activeObject)
+		canvas.renderAll()
+
+		dispatch({ editor: { tab } })
+	}
 
 	return (
 		<nav {...props}>
@@ -20,7 +30,7 @@ export const EditorTabs = (props) => {
 							tab === 'setting' && tw`bg-blue-50 border-r-2`,
 						]}
 						onClick={() => {
-							dispatch({ editor: { tab: 'setting' } })
+							handleUpdateTab('setting')
 						}}
 					>
 						<Settings />
@@ -33,7 +43,7 @@ export const EditorTabs = (props) => {
 							tab === 'text' && tw`bg-blue-50 border-r-2`,
 						]}
 						onClick={() => {
-							dispatch({ editor: { tab: 'text' } })
+							handleUpdateTab('text')
 						}}
 					>
 						<Type />
@@ -46,7 +56,7 @@ export const EditorTabs = (props) => {
 							tab === 'image' && tw`bg-blue-50 border-r-2`,
 						]}
 						onClick={() => {
-							dispatch({ editor: { tab: 'image' } })
+							handleUpdateTab('image')
 						}}
 					>
 						<Image />
@@ -59,7 +69,7 @@ export const EditorTabs = (props) => {
 							tab === 'shapes' && tw`bg-blue-50 border-r-2`,
 						]}
 						onClick={() => {
-							dispatch({ editor: { tab: 'shapes' } })
+							handleUpdateTab('shapes')
 						}}
 					>
 						<Hexagon />

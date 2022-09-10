@@ -10,7 +10,7 @@ export const EditorText = (props) => {
 
 	const [text, setText] = useState('')
 	const [rotation, setRotation] = useState('')
-	const [fill, setFill] = useState('')
+	const [fill, setFill] = useState('#000000')
 
 	const activeObject = canvas?.getActiveObject() || null
 
@@ -30,12 +30,13 @@ export const EditorText = (props) => {
 	const addNewText = () => {
 		if (canvas) {
 			canvas.discardActiveObject()
+			canvas.renderAll()
 		}
 
 		// reset form
 		setText('')
 		setRotation('')
-		setFill('')
+		setFill('#000000')
 	}
 
 	const updateText = (e) => {
@@ -74,7 +75,7 @@ export const EditorText = (props) => {
 			// reset input on discard active object
 			setText('')
 			setRotation('')
-			setFill('')
+			setFill('#000000')
 		}
 	}, [activeObject])
 
