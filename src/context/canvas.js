@@ -18,6 +18,7 @@ function CanvasProvider({ children }) {
 			x: null,
 			y: null,
 		},
+		images: [],
 	})
 
 	const value = { state, dispatch }

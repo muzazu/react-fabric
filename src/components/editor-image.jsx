@@ -1,16 +1,17 @@
 import { css } from '@emotion/css'
 import { Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Image } from 'react-feather'
 import tw from 'twin.macro'
 import { useCanvas } from '../context/canvas'
 
 export const EditorImage = (props) => {
 	const {
-		state: { canvas, fabric },
+		state: { canvas, fabric, images: cImgs },
+		dispatch,
 	} = useCanvas()
 	const [dragActive, setDragActive] = useState()
-	const [images, setImages] = useState([])
+	const [images, setImages] = useState(cImgs)
 
 	const onFileChange = (e) => {
 		if (!e.target?.files?.length) return
@@ -55,6 +56,12 @@ export const EditorImage = (props) => {
 			canvas.add(img)
 		})
 	}
+
+	useEffect(() => {
+		if (images) {
+			dispatch({ images })
+		}
+	}, [images])
 
 	return (
 		<div {...props}>

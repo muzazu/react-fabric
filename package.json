@@ -1,7 +1,9 @@
 {
-	"name": "client",
+	"name": "react-fabric-example",
 	"version": "0.1.0",
-	"private": true,
+	"homepage": "https://muzazu.github.io/react-fabric",
+	"private": false,
+	"license": "(MIT OR Apache-2.0)",
 	"dependencies": {
 		"@babel/core": "^7.16.0",
 		"@babel/plugin-transform-react-jsx": "^7.19.0",
@@ -67,6 +69,8 @@
 		"workbox-webpack-plugin": "^6.4.1"
 	},
 	"scripts": {
+		"predeploy": "yarn build",
+		"deploy": "gh-pages -d build",
 		"start": "node scripts/start.js",
 		"build": "node scripts/build.js",
 		"test": "node scripts/test.js"
@@ -85,7 +89,8 @@
 	},
 	"devDependencies": {
 		"babel-plugin-macros": "^3.1.0",
-		"fabric": "^5.2.4"
+		"fabric": "^5.2.4",
+		"gh-pages": "^4.0.0"
 	},
 	"jest": {
 		"roots": [
