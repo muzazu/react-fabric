@@ -76,29 +76,29 @@ export const EditorShapes = (props) => {
 			<h2 css={tw`text-2xl font-bold mb-8`}>Elements</h2>
 
 			{!activeObject && (
-				<div css={tw`flex -mx-4 mb-4`}>
-					<div css={tw`p-4`}>
+				<div css={tw`flex -mx-2 mb-4`}>
+					<div css={tw`p-2 w-full`}>
 						<button
-							css={tw`p-4 border border-gray-200 hover:bg-gray-100 rounded-md cursor-pointer`}
+							css={tw`p-4 border border-gray-200 hover:bg-gray-100 rounded-md cursor-pointer w-full`}
 							onClick={addCircle}
 						>
-							<Circle css={tw`h-16 w-16`} />
+							<Circle css={tw`h-12 w-12`} />
 						</button>
 					</div>
-					<div css={tw`p-4`}>
+					<div css={tw`p-2 w-full`}>
 						<button
-							css={tw`p-4 border border-gray-200 hover:bg-gray-100 rounded-md cursor-pointer`}
+							css={tw`p-4 border border-gray-200 hover:bg-gray-100 rounded-md cursor-pointer w-full`}
 							onClick={addRect}
 						>
-							<Square css={tw`h-16 w-16`} />
+							<Square css={tw`h-12 w-12`} />
 						</button>
 					</div>
-					<div css={tw`p-4`}>
+					<div css={tw`p-2 w-full`}>
 						<button
-							css={tw`p-4 border border-gray-200 hover:bg-gray-100 rounded-md cursor-pointer`}
+							css={tw`p-4 border border-gray-200 hover:bg-gray-100 rounded-md cursor-pointer w-full`}
 							onClick={addTriangle}
 						>
-							<Triangle css={tw`h-16 w-16`} />
+							<Triangle css={tw`h-12 w-12`} />
 						</button>
 					</div>
 				</div>
