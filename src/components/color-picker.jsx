@@ -1,4 +1,3 @@
-import React from 'react'
 import { css } from '@emotion/css'
 import { Listbox, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
@@ -57,7 +56,7 @@ export const ColorPicker = ({ selected, setSelected, ...props }) => {
 										></span>
 										{selected ? (
 											<span
-												css={tw`absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600`}
+												css={tw`absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400`}
 											>
 												<CheckCircle
 													css={tw`h-5 w-5`}

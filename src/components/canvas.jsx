@@ -6,7 +6,12 @@ import { onObjectSelected } from '../utils/canvas-events'
 
 export const FabricJSCanvas = ({ options, ...props }) => {
 	const canvasEl = useRef(null)
-	const { dispatch } = useCanvas()
+	const {
+		dispatch,
+		state: {
+			editor: { tab },
+		},
+	} = useCanvas()
 
 	const CANVAS_OPTION = {
 		hoverCursor: 'pointer',
@@ -20,7 +25,7 @@ export const FabricJSCanvas = ({ options, ...props }) => {
 	}
 
 	const dispatchSelection = (e) =>
-		dispatch({ editor: { tab: onObjectSelected(e) } })
+		dispatch({ editor: { tab: onObjectSelected(e) || tab || 'setting' } })
 
 	const onMouseDown = (e) => {
 		if (e.button === 3) {
